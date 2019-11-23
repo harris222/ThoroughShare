@@ -1,0 +1,27 @@
+.chatline{
+  background-color: #ffffff;
+  display: block;
+  height: 5vh;
+  width: 5vw;
+  margin-bottom: 1vw;
+}
+
+#typeline{
+  background-color: #ff4da6;
+  height: 5vh;
+  width: 5vw;
+}
+
+#typepane{
+  background-color: #ccff66;
+  height: 10vh;
+  width: 50vw;
+  margin-top: 2vh;
+}
+
+#messagepane{
+  background-color: #33ffff;
+  height: 70vh;
+  width: 50vw;
+  margin-top: 2vh;
+}

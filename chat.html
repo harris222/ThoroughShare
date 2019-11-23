@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="chat.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Chat</title>
+  </head>
+  <body style="background-color: #99ddff">
+    <div class="container">
+
+      <br>
+      <div class="container" id="namepane"><p id="name"></p></div>
+      <div class="container" id="messagepane">
+        <div class="chatline">1</div>
+        <div class="chatline">2</div>
+        <div class="chatline">3</div>
+        <div class="chatline">4</div>
+        <div class="chatline">5</div>
+        <div class="chatline">6</div>
+        <div class="chatline">7</div>
+        <div class="chatline">8</div>
+        <div class="chatline">9</div>
+        <div class="chatline">10</div>
+      </div>
+
+      <div class="container"></div>
+
+      <div class="container" id="typepane">
+         <form id="chat">
+             <input type="text" id="typeline" name="msg_text" />
+             <input type="submit" value="Send!" /> 
+         </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(()=>{
+        $("#login_btn").click(()=>{
+          var message = {
+            posttype: "login",
+            usernamelogin: $("#usernamelogin").val(),
+            passwordlogin: $("#passwordlogin").val()
+          }
+          postMessages(message)
+        })
+      })
+
+      function postMessages(message){
+        $.post('https://c34401f4.ngrok.io', message)
+      }
+    </script>
+  </body>
+</html>
