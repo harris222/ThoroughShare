@@ -8,5 +8,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px;
+  background-color: rgba(125,193,192,0.6);
 }
