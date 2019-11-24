@@ -14,20 +14,22 @@
     <div class="container">
 
       <br>
-      <div class="container" id="namepane"><p id="name">{{other_person}}</p></div>
-      <div class="container" id="messagepane">
+      <div>
+        <div class="container" id="namepane"><p id="name">{{other_person}}</p></div>
+        <div style="float:right;">
+        <div class="container" id="messagepane"></div>
+
+        <div class="container"></div>
+
+        <div class="container" id="typepane">
+          <form id="chat">
+              <input type="text" id="typeline" name="msg_text" />
+              <input type="submit" id="sendbtn" value="Send!" />
+            </form>
+          </div>
+        </div>
+        </div>
       </div>
-
-      <div class="container"></div>
-
-      <div class="container" id="typepane">
-         <form id="chat">
-             <input type="text" id="typeline" name="msg_text" />
-             <input type="submit" id="sendbtn" value="Send!" />
-         </form>
-      </div>
-    </div>
-
     <!-- <script type="text/javascript">
       function postMessages(message){
         $.post('https://c34401f4.ngrok.io', message)
