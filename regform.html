@@ -12,32 +12,34 @@
     <div class="container">
 
       <br>
+      <form name="register">
       <div class="jumbotron">
         <h1>Enter a Community of Experience</h1>
         <br>
         <br>
         <h6>A New <mark>Username</mark>..</h6>
-        <input id="username" class="form-control" placeholder="Make it cool">
+        <input id="username" class="form-control" placeholder="Make it cool" name="username" required="required">
         <br>
         <br>
         <h6>A Fitting <mark>Password</mark>..</h6>
-        <input id="password" class="form-control" placeholder="Have it strong">
+        <input id="password" class="form-control" placeholder="Have it strong" name="password" required="required">
         <br>
         <br>
         <h6>What you want to <mark>Learn</mark> about..</h6>
-        <input id="teach" class="form-control" placeholder="Something to prepare for, or overcome">
+        <input id="teach" class="form-control" placeholder="Something to prepare for, or overcome" name="teach" required="required">
         <br>
         <br>
         <h6>What you want to <mark>Teach</mark>..</h6>
-        <input id="learn" class="form-control" placeholder="Something you can share experience on">
+        <input id="learn" class="form-control" placeholder="Something you can share experience on" name="learn" required="required">
         <br>
         <br>
         <h6>Your <mark>Email</mark>..</h6>
-        <input id="email" class="form-control" placeholder="Your favourite one">
+        <input id="email" class="form-control" placeholder="Your favourite one" name="email" required="required">
         <br>
         <br>
-        <button id="reg_btn" class="btn btn-info">Register</button>
+        <button id="reg_btn" class="btn btn-info" type="submit" formmethod="post">Register</button>
       </div>
+        </form>
     </div>
 
   </body>
