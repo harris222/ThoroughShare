@@ -34,6 +34,7 @@
         <div class="container" id="typepane">
           <form id="chat">
               <input type="text" id="typeline" name="msg_text" />
+              <input type="hidden" id="get_request_method" value="send_message">
               <input type="submit" id="sendbtn" value="Send!" />
             </form>
           </div>
@@ -48,9 +49,8 @@
 
     <script type="text/javascript">
       var me; //hold my own identity
-      const socket = new WebSocket('ws://demos.kaazing.com/echo'); //switch out for actual later
-      const MY_ID = 1;
-      const OTHER_ID = 2;
+      const socket = new WebSocket('wss://ce3189f6.ngrok.io/ws'); //switch out for actual later
+      const MY_ID = "{{ My_Id }}";
 
       // Connection opened
       // socket.addEventListener('open', function (event) { //send to server
@@ -60,7 +60,7 @@
       //when user presses button: send to server
       $( "form" ).submit(function(event) {
         var inputVal = document.getElementById("typeline").value;
-        socket.send(JSON.stringify({identity: MY_ID, message: inputVal}));
+        socket.send(JSON.stringify({identity: MY_ID, message: inputVal, recast:''}));
         document.getElementById("typeline").value = "";
         event.preventDefault();
       });

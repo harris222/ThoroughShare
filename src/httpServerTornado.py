@@ -15,10 +15,10 @@ print(info)
 passwordHasher = PasswordHasher()
 
 
-
 def login(login, password):
     dbInfo = client.user_info.users.find_one({"email":login})
-    dbPassword = dbInfo['password']
+    assert dbInfo is not None
+    dbPassword = dbInfo.get('password')
 
     passwordHasher.verify(dbPassword, password)
 
@@ -27,7 +27,10 @@ def login(login, password):
         print("rehashed password")
         client.user_info.users.update_one({"_id":dbInfo['_id']}, {"$set":{"password":passwordHasher.hash(password)}})
 
-login("email@gmail.com", "password")
+try:
+    login("email@gmail.com", "password")
+except:
+    print("Login failed")
 
 
 
@@ -42,6 +45,8 @@ def giphy_request(num):
     return duck_images
 
 class MainHandler(tornado.web.RequestHandler):
+
+    roomName = None
 
     def get(self, *args, **kwargs):
         #get_ducks = giphy_request(5)
@@ -62,8 +67,13 @@ class MainHandler(tornado.web.RequestHandler):
 
                 new_client_info = {'email':post_request_data['email'], 'displayname':post_request_data['username'], 'password':hashed_password, 'learn':post_request_data['learn'], 'teach':post_request_data['teach']}
 
+                if MainHandler.roomName is None:
+                    MainHandler.roomName = post_request_data['username']
 
                 print(client.user_info.users.insert_one(new_client_info))
 
-                self.render("../static/names.html")
+                self.render("../static/chat.html", other_person=MainHandler.roomName, My_Id = post_request_data['email'])
+            else:
+                # user already exists
+                self.render("../static/regform.html")
 
