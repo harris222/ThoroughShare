@@ -41,7 +41,7 @@
   margin-top: 2vh;
   margin-left: auto;
   margin-right: 0px;
-  border: 4px dashed #c3c3c3;
+  border: 2px dashed #c3c3c3;
 }
 
 #messagepane{
@@ -51,11 +51,21 @@
   overflow-y: scroll;
   margin-left: auto;
   margin-right: 0px;
+  border: 2px dashed #c3c3c3;
+}
+
+#namepane{
+  background-color: #99ddff;
+  width: 30vw;
+  margin-left: 0px;
+  margin-right: auto;
   border: 4px dashed #c3c3c3;
+  float: left;
 }
 
 #sendbtn{
-  border: none;
+  background-color: white;
+  border: 1px solid black;
   color: black;
   text-align: center;
   text-decoration: none;
