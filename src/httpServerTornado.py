@@ -75,5 +75,5 @@ class MainHandler(tornado.web.RequestHandler):
                 self.render("../static/chat.html", other_person=MainHandler.roomHost['displayname'], My_Id = post_request_data['email'], host_learn = MainHandler.roomHost['learn'], host_share = MainHandler.roomHost['teach'])
             else:
                 # user already exists
-                self.render("../static/regform.html")
+                self.render("../static/login.html")
 
