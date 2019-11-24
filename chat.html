@@ -14,7 +14,7 @@
     <div class="container">
 
       <br>
-      <div class="container" id="namepane"><p id="name"></p></div>
+      <div class="container" id="namepane"><p id="name">{{other_person}}</p></div>
       <div class="container" id="messagepane">
       </div>
 
@@ -28,32 +28,46 @@
       </div>
     </div>
 
-    <script type="text/javascript">
-
-      $(()=>{
-        $("#login_btn").click(()=>{
-          var message = {
-            posttype: "login",
-            usernamelogin: $("#usernamelogin").val(),
-            passwordlogin: $("#passwordlogin").val()
-          }
-          postMessages(message)
-        })
-      })
-
+    <!-- <script type="text/javascript">
       function postMessages(message){
         $.post('https://c34401f4.ngrok.io', message)
       }
-    </script>
+    </script> -->
+
     <script type="text/javascript">
+      const socket = new WebSocket('wss://echo.websocket.org'); //switch out for actual later
+
+      // Connection opened
+      // socket.addEventListener('open', function (event) { //send to server
+      //     socket.send('Hello Server!');
+      // });
+
+      //when user presses button: send to server
       $( "form" ).submit(function(event) {
         var inputVal = document.getElementById("typeline").value;
-        $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+        socket.send(inputVal);
         document.getElementById("typeline").value = "";
-        var chatHistory = document.getElementById("messagepane");
-        chatHistory.scrollTop = chatHistory.scrollHeight;
         event.preventDefault();
       });
+
+      // Listen for messages
+      socket.addEventListener('message', function (event) { //get from server
+          console.log('Message from server ', event.data);
+          var inputVal = event.data;
+          $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+          var chatHistory = document.getElementById("messagepane");
+          chatHistory.scrollTop = chatHistory.scrollHeight;
+          event.preventDefault();
+      });
+
+      // $( "form" ).submit(function(event) {
+      //   var inputVal = document.getElementById("typeline").value;
+      //   $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+      //   document.getElementById("typeline").value = "";
+      //   var chatHistory = document.getElementById("messagepane");
+      //   chatHistory.scrollTop = chatHistory.scrollHeight;
+      //   event.preventDefault();
+      // });
     </script>
   </body>
 </html>
