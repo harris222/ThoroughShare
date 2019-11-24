@@ -35,7 +35,10 @@
     </script> -->
 
     <script type="text/javascript">
+      var me; //hold my own identity
       const socket = new WebSocket('wss://echo.websocket.org'); //switch out for actual later
+      const MY_ID = 1;
+      const OTHER_ID = 2;
 
       // Connection opened
       // socket.addEventListener('open', function (event) { //send to server
@@ -45,7 +48,7 @@
       //when user presses button: send to server
       $( "form" ).submit(function(event) {
         var inputVal = document.getElementById("typeline").value;
-        socket.send(inputVal);
+        socket.send({identity: {MY_ID}, message: {inputVal}});
         document.getElementById("typeline").value = "";
         event.preventDefault();
       });
@@ -53,8 +56,15 @@
       // Listen for messages
       socket.addEventListener('message', function (event) { //get from server
           console.log('Message from server ', event.data);
-          var inputVal = event.data;
-          $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+          var inputVal = event.data.message;
+
+          //format according to who sent it
+          if(event.data.identity == MY_ID)
+            $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+          else
+            $("#messagepane").append('<div class = "otherchatline">'+inputVal+'</div>');
+
+          //fixing the message pane
           var chatHistory = document.getElementById("messagepane");
           chatHistory.scrollTop = chatHistory.scrollHeight;
           event.preventDefault();
