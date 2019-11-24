@@ -8,6 +8,27 @@ body{
   user-select: none;
 }
 
+h1{
+  font-family: 'Impact', Arial Black, sans-serif;
+}
+
+
+/* Just nuances ... */
+.input{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h6 {
+  text-align: left;
+}
+
+input{
+  display: block;
+}
+
 .background-image-container{
   position: fixed;
   height: 150vh;
@@ -15,6 +36,7 @@ body{
   left: 0px;
   top: 0px;
   z-index: -1;
+  opacity: 0.6;
 }
 
 .background-image-container > img{
@@ -35,22 +57,35 @@ body{
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+  padding-bottom: 40px;
   margin-top: 10px;
   width: 40%;
   border: 1.5px dashed lack;
   font-size: 20px;
   text-align: center;
   background-color: white;
-} .jumbotron:hover{
   transition: 0.5s linear;
   box-shadow: inset 0 0 10px 2px;
   -moz-webkit-box-shadow: inset 0 0 10px 2px;
 }
 
-#hand-Container{
-  height: 40%;
+#reef-Container{
+  height: 100%;
   width: 100%;
-} #hand-Container > img{
-  max-height: 40%;
-  max-width: 40%;
+} #reef-Container > img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#reg_btn{
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  transition: 0.5s linear;
+} #reg_btn:hover{
+  transition: 0.5s linear;
+  background-color: white;
+  color: black;
+  box-shadow: inset 0 0 10px 2px;
+  -moz-webkit-box-shadow: inset 0 0 10px 2px;
 }
