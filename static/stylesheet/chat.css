@@ -1,0 +1,66 @@
+.chatline{
+  background-color: #ffffff;
+  display: block;
+  height: max-content;
+  width: max-content;
+  max-width: 40vw;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  padding: 5px 10px;
+  border-radius: 5px;
+  word-wrap: break-word;
+  margin-left: auto;
+  margin-right: 0px;
+}
+
+.otherchatline{
+  background-color: #99aaff;
+  display: block;
+  height: max-content;
+  width: max-content;
+  max-width: 40vw;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  padding: 5px 10px;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+#typeline{
+  background-color: white;
+  height: 5vh;
+  width: 40vw;
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+#typepane{
+  background-color: #99ddff;
+  height: 10vh;
+  width: 50vw;
+  margin-top: 2vh;
+  margin-left: auto;
+  margin-right: 0px;
+  border: 4px dashed #c3c3c3;
+}
+
+#messagepane{
+  background-color: #99ddff;
+  height: 70vh;
+  width: 50vw;
+  overflow-y: scroll;
+  margin-left: auto;
+  margin-right: 0px;
+  border: 4px dashed #c3c3c3;
+}
+
+#sendbtn{
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  margin-left: 1vw;
+}
