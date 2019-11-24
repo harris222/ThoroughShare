@@ -46,7 +46,7 @@ def giphy_request(num):
 
 class MainHandler(tornado.web.RequestHandler):
 
-    roomName = None
+    roomHost = None
 
     def get(self, *args, **kwargs):
         #get_ducks = giphy_request(5)
@@ -67,12 +67,12 @@ class MainHandler(tornado.web.RequestHandler):
 
                 new_client_info = {'email':post_request_data['email'], 'displayname':post_request_data['username'], 'password':hashed_password, 'learn':post_request_data['learn'], 'teach':post_request_data['teach']}
 
-                if MainHandler.roomName is None:
-                    MainHandler.roomName = post_request_data['username']
+                if MainHandler.roomHost is None:
+                    MainHandler.roomHost = {'displayname':new_client_info['displayname'], 'learn':new_client_info['learn'], 'teach':new_client_info['teach']}
 
                 print(client.user_info.users.insert_one(new_client_info))
 
-                self.render("../static/chat.html", other_person=MainHandler.roomName, My_Id = post_request_data['email'])
+                self.render("../static/chat.html", other_person=MainHandler.roomHost['displayname'], My_Id = post_request_data['email'], host_learn = MainHandler.roomHost['learn'], host_share = MainHandler.roomHost['teach'])
             else:
                 # user already exists
                 self.render("../static/regform.html")
