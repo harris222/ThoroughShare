@@ -48,8 +48,11 @@
     </script> -->
 
     <script type="text/javascript">
+      function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
       var me; //hold my own identity
-      const socket = new WebSocket('wss://ce3189f6.ngrok.io/ws'); //switch out for actual later
+      const socket = new WebSocket('wss://'+location.host+'/ws'); //switch out for actual later
       const MY_ID = "{{ My_Id }}";
 
       // Connection opened
@@ -73,9 +76,9 @@
 
           //format according to who sent it
           if(eventdata.identity == MY_ID)
-            $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+            $("#messagepane").append('<div class = "chatline">'+htmlEntities(inputVal)+'</div>');
           else
-            $("#messagepane").append('<div class = "otherchatline">'+inputVal+'</div>');
+            $("#messagepane").append('<div class = "otherchatline">'+htmlEntities(inputVal)+'</div>');
 
           //fixing the message pane
           var chatHistory = document.getElementById("messagepane");
