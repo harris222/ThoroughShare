@@ -35,13 +35,13 @@
 }
 
 #typepane{
-  background-color: #3e3a6b;
+  background-color: #7872b8;
   height: 10vh;
   width: 50vw;
   margin-top: 2vh;
   margin-left: auto;
   margin-right: 0px;
-  border: 1px solid black;
+  border: 2px solid #626262;
 }
 
 #messagepane{
@@ -51,12 +51,11 @@
   overflow-y: scroll;
   margin-left: auto;
   margin-right: 0px;
-  border: 1px solid black;
+  border: 8px solid #626262;
   border-radius: 5px;
 }
 
 #namepane{
-  background-color: #99ddff;
   width: 30vw;
   margin-left: 0px;
   margin-right: auto;
