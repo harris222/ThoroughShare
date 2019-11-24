@@ -1,3 +1,4 @@
+<<<<<<< HEAD:static/stylesheet/victims.css
 .card{
   display: inline-block;
   margin: 1vw;
@@ -10,3 +11,17 @@
   justify-content: center;
   padding: 10px;
 }
+=======
+.card{
+  display: inline-block;
+  margin: 1vw;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+#card-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(125,193,192,0.6);
+}
+>>>>>>> caaa7ae7660ef71bf2b7f3bf7a18913acb527aa4:victims.css

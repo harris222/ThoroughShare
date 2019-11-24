@@ -1,3 +1,4 @@
+<<<<<<< HEAD:static/chat.html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -82,3 +83,102 @@
     </script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="victims.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Chat</title>
+  </head>
+  <body style="background-color: rgba(125,193,192,0.6)">
+    <div class="container">
+
+      <br>
+      <div>
+        <div class="container" id="namepane">
+          <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <img src="./img/p1.png" class="card-img-top">
+            <h5 class="card-title" style="padding-top: 20px;">Name</h5>
+            <p class="card-text">Learn:</p>
+            <p class="card-text">Share:</p>
+            <a href="#" class="card-link">Block</a>
+          </div>
+        </div>
+      </div>
+        <div style="float:right;">
+        <div class="container" id="messagepane"></div>
+
+        <div class="container"></div>
+
+        <div class="container" id="typepane">
+          <form id="chat">
+              <input type="text" id="typeline" name="msg_text" />
+              <input type="submit" id="sendbtn" value="Send!" />
+            </form>
+          </div>
+        </div>
+        </div>
+      </div>
+    <!-- <script type="text/javascript">
+      function postMessages(message){
+        $.post('https://c34401f4.ngrok.io', message)
+      }
+    </script> -->
+
+    <script type="text/javascript">
+      var me; //hold my own identity
+      const socket = new WebSocket('ws://demos.kaazing.com/echo'); //switch out for actual later
+      const MY_ID = 1;
+      const OTHER_ID = 2;
+
+      // Connection opened
+      // socket.addEventListener('open', function (event) { //send to server
+      //     socket.send('Hello Server!');
+      // });
+
+      //when user presses button: send to server
+      $( "form" ).submit(function(event) {
+        var inputVal = document.getElementById("typeline").value;
+        socket.send(JSON.stringify({identity: MY_ID, message: inputVal}));
+        document.getElementById("typeline").value = "";
+        event.preventDefault();
+      });
+
+      // Listen for messages
+      socket.onmessage = function (event) { //get from server
+          var eventdata = JSON.parse(event.data);
+          var inputVal = eventdata.message;
+          console.log('Message from server ', inputVal);
+
+          //format according to who sent it
+          if(eventdata.identity == MY_ID)
+            $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+          else
+            $("#messagepane").append('<div class = "otherchatline">'+inputVal+'</div>');
+
+          //fixing the message pane
+          var chatHistory = document.getElementById("messagepane");
+          chatHistory.scrollTop = chatHistory.scrollHeight;
+          event.preventDefault();
+      };
+
+      // $( "form" ).submit(function(event) {
+      //   var inputVal = document.getElementById("typeline").value;
+      //   $("#messagepane").append('<div class = "chatline">'+inputVal+'</div>');
+      //   document.getElementById("typeline").value = "";
+      //   var chatHistory = document.getElementById("messagepane");
+      //   chatHistory.scrollTop = chatHistory.scrollHeight;
+      //   event.preventDefault();
+      // });
+    </script>
+  </body>
+</html>
+>>>>>>> caaa7ae7660ef71bf2b7f3bf7a18913acb527aa4:chat.html
