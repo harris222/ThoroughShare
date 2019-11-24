@@ -1,15 +1,22 @@
 .chatline{
   background-color: #ffffff;
   display: block;
-  height: 5vh;
-  width: 5vw;
+  height: max-content;
+  width: max-content;
+  max-width: 40vw;
   margin-bottom: 1vw;
+  margin-top: 1vw;
+  padding: 0px 5px;
+  border-radius: 5px;
+  word-wrap: break-word;
+  margin-left: auto;
+  margin-right: 0px;
 }
 
 #typeline{
-  background-color: #ff4da6;
+  background-color: white;
   height: 5vh;
-  width: 5vw;
+  width: 40vw;
 }
 
 #typepane{
@@ -23,5 +30,13 @@
   background-color: #33ffff;
   height: 70vh;
   width: 50vw;
-  margin-top: 2vh;
+  overflow-y: scroll;
+}
+
+#sendbtn{
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
