@@ -1,5 +1,5 @@
 .chatline{
-  background-color: #ffffff;
+  background-color: #99ddff;
   display: block;
   height: max-content;
   width: max-content;
@@ -35,23 +35,24 @@
 }
 
 #typepane{
-  background-color: #99ddff;
+  background-color: #3e3a6b;
   height: 10vh;
   width: 50vw;
   margin-top: 2vh;
   margin-left: auto;
   margin-right: 0px;
-  border: 2px dashed #c3c3c3;
+  border: 1px solid black;
 }
 
 #messagepane{
-  background-color: #99ddff;
-  height: 70vh;
+  background-color: white;
+  height: 80vh;
   width: 50vw;
   overflow-y: scroll;
   margin-left: auto;
   margin-right: 0px;
-  border: 2px dashed #c3c3c3;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 #namepane{
@@ -59,7 +60,7 @@
   width: 30vw;
   margin-left: 0px;
   margin-right: auto;
-  border: 4px dashed #c3c3c3;
+  border: 4px dashed #black;
   float: left;
 }
 
