@@ -84,7 +84,11 @@ body{
 /*********************** FRONT NAVBARRRRRRRRRRRRRRRRRRR *******************************/
 .navbar-top{
   position: relative;
+<<<<<<< HEAD
   background-image: url("/static/images/trees.jpg");
+=======
+  background-image: url("../images/lake.jpg");
+>>>>>>> 0de884beeb92f4c9f0c37aac4d8617760c6942c9
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

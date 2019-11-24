@@ -18,11 +18,19 @@
       <div>
         <div class="container" id="namepane">
           <div class="card-body">
+<<<<<<< HEAD
             <img src="/static/images/p1.png" class="card-img-top">
             <h5 class="card-title" style="padding-top: 20px;">Name</h5>
             <p class="card-text">Learn:</p>
             <p class="card-text">Share:</p>
+=======
+            <img src="static/images/p1.png" class="card-img-top">
+            <h5 class="card-title" style="padding-top: 20px;">{{other_person}}</h5>
+            <p class="card-text">Learn: {{ host_learn }}</p>
+            <p class="card-text">Share: {{ host_share }}</p>
+>>>>>>> 0de884beeb92f4c9f0c37aac4d8617760c6942c9
             <a href="#" class="card-link">Block</a>
+            <a href="./names.html" class="card-link">Back to Platform</a>
           </div>
       </div>
         <div style="float:right;">
@@ -33,6 +41,7 @@
         <div class="container" id="typepane">
           <form id="chat">
               <input type="text" id="typeline" name="msg_text" />
+              <input type="hidden" id="get_request_method" value="send_message">
               <input type="submit" id="sendbtn" value="Send!" />
             </form>
           </div>
@@ -47,9 +56,8 @@
 
     <script type="text/javascript">
       var me; //hold my own identity
-      const socket = new WebSocket('ws://demos.kaazing.com/echo'); //switch out for actual later
-      const MY_ID = 1;
-      const OTHER_ID = 2;
+      const socket = new WebSocket('wss://ce3189f6.ngrok.io/ws'); //switch out for actual later
+      const MY_ID = "{{ My_Id }}";
 
       // Connection opened
       // socket.addEventListener('open', function (event) { //send to server
@@ -59,7 +67,7 @@
       //when user presses button: send to server
       $( "form" ).submit(function(event) {
         var inputVal = document.getElementById("typeline").value;
-        socket.send(JSON.stringify({identity: MY_ID, message: inputVal}));
+        socket.send(JSON.stringify({identity: MY_ID, message: inputVal, recast:''}));
         document.getElementById("typeline").value = "";
         event.preventDefault();
       });

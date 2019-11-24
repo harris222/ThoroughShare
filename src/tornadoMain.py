@@ -12,8 +12,8 @@ if __name__ == "__main__":
     )
 
     application = tornado.web.Application(handlers=[
-        (r"/", httpServerTornado.MainHandler),   (r"/ws", websocketServerTornado.WebSocketHandler),], static_path='/res')
+        (r"/", httpServerTornado.MainHandler),   (r"/ws", websocketServerTornado.WebSocketHandler)], static_path='../static/')
 
     sv = tornado.httpserver.HTTPServer(application, **settings)
-    sv.listen(8080)
+    sv.listen(443)
     tornado.ioloop.IOLoop.current().start()

@@ -15,10 +15,10 @@ print(info)
 passwordHasher = PasswordHasher()
 
 
-
 def login(login, password):
     dbInfo = client.user_info.users.find_one({"email":login})
-    dbPassword = dbInfo['password']
+    assert dbInfo is not None
+    dbPassword = dbInfo.get('password')
 
     passwordHasher.verify(dbPassword, password)
 
@@ -27,7 +27,10 @@ def login(login, password):
         print("rehashed password")
         client.user_info.users.update_one({"_id":dbInfo['_id']}, {"$set":{"password":passwordHasher.hash(password)}})
 
-login("email@gmail.com", "password")
+try:
+    login("email@gmail.com", "password")
+except:
+    print("Login failed")
 
 
 
@@ -43,15 +46,34 @@ def giphy_request(num):
 
 class MainHandler(tornado.web.RequestHandler):
 
+    roomHost = None
+
     def get(self, *args, **kwargs):
         #get_ducks = giphy_request(5)
         print("Get", self.request.arguments, dir(self.request))
-        self.render("../regform.html")
+        self.render("../static/regform.html")
 
     def post(self, *args, **kwargs):
         decoded_body = tornado.escape.to_unicode(self.request.body)
         body_arguments = decoded_body.split('&')
-        account_info = dict([(tornado.escape.url_unescape(key), tornado.escape.url_unescape(value)) for key,value in map(lambda x: x.split('='), body_arguments)])
-        print(account_info)
-        self.render("../victims.html")
+        post_request_data = dict([(tornado.escape.url_unescape(key), tornado.escape.url_unescape(value)) for key,value in map(lambda x: x.split('='), body_arguments)])
+        post_method = post_request_data.get('post_request_method')
+
+        if post_method == 'register':
+            existing_user_with_email = client.user_info.users.find_one({"email":post_request_data['email']})
+            if existing_user_with_email is None:
+
+                hashed_password = passwordHasher.hash(post_request_data['password'])
+
+                new_client_info = {'email':post_request_data['email'], 'displayname':post_request_data['username'], 'password':hashed_password, 'learn':post_request_data['learn'], 'teach':post_request_data['teach']}
+
+                if MainHandler.roomHost is None:
+                    MainHandler.roomHost = {'displayname':new_client_info['displayname'], 'learn':new_client_info['learn'], 'teach':new_client_info['teach']}
+
+                print(client.user_info.users.insert_one(new_client_info))
+
+                self.render("../static/chat.html", other_person=MainHandler.roomHost['displayname'], My_Id = post_request_data['email'], host_learn = MainHandler.roomHost['learn'], host_share = MainHandler.roomHost['teach'])
+            else:
+                # user already exists
+                self.render("../static/regform.html")
 
