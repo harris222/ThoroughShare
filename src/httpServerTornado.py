@@ -7,7 +7,7 @@ import urllib, requests, json, secrets, time, src.mongodb_password
 
 
 database_access_client = pymongo.MongoClient(
-        "mongodb+srv://dumfingDB:" + src.mongodb_password + "@chatapp-qv8xb.gcp.mongodb.net/test?retryWrites=true&w=majority")
+        "mongodb+srv://dumfingDBAccessor:" + src.mongodb_password.password + "@chatapp-qv8xb.gcp.mongodb.net/test?retryWrites=true&w=majority")
 
 info = database_access_client.user_info.users.find_one()
 
