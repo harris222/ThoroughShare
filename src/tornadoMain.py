@@ -12,7 +12,7 @@ if __name__ == "__main__":
     )
 
     application = tornado.web.Application(handlers=[
-        (r"/", httpServerTornado.MainHandler),   (r"/ws", websocketServerTornado.WebSocketHandler)], static_path='../static/')
+        (r"/", httpServerTornado.MainHandler),   (r"/ws", websocketServerTornado.WebSocketHandler)], static_path='../static/', cookie_secret="XBvhtWJQ$jJDaMEegRmg8pel9cRCmtg")
 
     sv = tornado.httpserver.HTTPServer(application, **settings)
     sv.listen(443)
